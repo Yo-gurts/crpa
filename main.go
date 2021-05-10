@@ -4,6 +4,7 @@ import (
     "fmt"
 	"net/http"
 	"text/template"
+    "time"
 )
 
 func main() {
@@ -15,7 +16,7 @@ func main() {
 func movein(w http.ResponseWriter, req *http.Request) {
 	mquery := req.URL.Query()
 	name := mquery.Get("name")
-	fmt.Println(name)
+	fmt.Printf("Date: %v, Name: %s\n", time.Now(), name)
 	t, _ := template.ParseFiles("movein.html")
 	t.Execute(w, name)
 }
@@ -23,7 +24,7 @@ func movein(w http.ResponseWriter, req *http.Request) {
 func moveout(w http.ResponseWriter, req *http.Request) {
 	mquery := req.URL.Query()
 	name := mquery.Get("name")
-	fmt.Println(name)
+	fmt.Printf("Date: %v, Name: %s\n", time.Now(), name)
 	t, _ := template.ParseFiles("moveout.html")
 	t.Execute(w, name)
 }
